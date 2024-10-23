@@ -21,6 +21,7 @@ Personagem = sprites.create(img`
     . . . . 8 8 8 8 8 8 8 . . . . . 
     . . . . 8 . . . . . 8 . . . . . 
     `, SpriteKind.Player)
+let Nome = game.askForString("Qual é seu nome?")
 let mySprite = sprites.create(img`
     . . . . . . c c c c c c c . . . 
     . . . . . c f f 6 6 f f 7 c . . 
@@ -39,7 +40,7 @@ let mySprite = sprites.create(img`
     . f 6 1 1 1 1 6 6 6 6 6 c . . . 
     . . f f c c c c c c c c . . . . 
     `, SpriteKind.Enemy)
-let Inimigo = sprites.create(img`
+let cobra_1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . c c c c c 
@@ -57,10 +58,31 @@ let Inimigo = sprites.create(img`
     . c 1 c f f 1 c 7 6 f 6 6 c c . 
     . c c c c c c c c c c c c . . . 
     `, SpriteKind.Enemy)
-Inimigo.setPosition(146, 97)
-mySprite.setPosition(12, 105)
-mySprite.follow(Personagem, 70)
-Inimigo.follow(Personagem, 60)
+let myEnemy = sprites.create(img`
+    . . . c c c c c c . . . . . . . 
+    . . c 6 7 7 7 7 6 c . . . . . . 
+    . c 7 7 7 7 7 7 7 7 c . . . . . 
+    c 6 7 7 7 7 7 7 7 7 6 c . . . . 
+    c 7 c 6 6 6 6 c 7 7 7 c . . . . 
+    f 7 6 f 6 6 f 6 7 7 7 f . . . . 
+    f 7 7 7 7 7 7 7 7 7 7 f . . . . 
+    . f 7 7 7 7 6 c 7 7 6 f . . . . 
+    . . f c c c c 7 7 6 f c c c . . 
+    . . c 6 2 7 7 7 f c c 7 7 7 c . 
+    . c 6 7 7 2 7 7 c f 6 7 7 7 7 c 
+    . c 1 1 1 1 7 6 6 c 6 6 6 c c c 
+    . c 1 1 1 1 1 6 6 6 6 6 6 c . . 
+    . c 6 1 1 1 1 1 6 6 6 6 6 c . . 
+    . . c 6 1 1 1 1 1 7 6 6 c c . . 
+    . . . c c c c c c c c c c . . . 
+    `, SpriteKind.Enemy)
+game.splash(" Bem Vindo, " + Nome)
+mySprite.setPosition(146, 97)
+myEnemy.setPosition(12, 105)
+cobra_1.setPosition(15, 10)
+mySprite.follow(Personagem, 50)
+cobra_1.follow(Personagem, 55)
+myEnemy.follow(Personagem, 45)
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -185,4 +207,3 @@ scene.setBackgroundImage(img`
     `)
 Personagem.setStayInScreen(true)
 controller.moveSprite(Personagem)
-game.splash("Seja Bem vindo")
